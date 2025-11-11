@@ -1,5 +1,5 @@
 body {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Roboto', sans-serif; /* Usa a fonte Roboto como padrão */
   background: linear-gradient(135deg, #FFB6C1, #87CEFA, #98FB98, #FFFACD);
   background-size: 400% 400%;
   animation: gradientBG 8s ease infinite;
@@ -57,7 +57,7 @@ h1 {
 #game-board {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 15px;
+  gap: 10px; /* Diminuí um pouco o gap padrão */
   max-width: 600px;
   margin: 30px auto;
 }
@@ -280,4 +280,31 @@ h1 {
 #start-game-btn:hover {
   background: #218838;
   transform: scale(1.1);
+}
+
+/* --- REGRAS DE RESPONSIVIDADE --- */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5em; /* Diminui o título em telas pequenas */
+  }
+
+  #game-board {
+    max-width: 95%; /* Ocupa quase toda a largura */
+    gap: 8px; /* Espaçamento ainda menor entre as cartas */
+  }
+
+  .card {
+    /* Remove o tamanho fixo para que a carta se ajuste ao grid */
+    width: auto; 
+    height: 120px; /* Mantém uma altura razoável */
+  }
+
+  #player-profile {
+    /* Ajusta o perfil para não ficar tão colado na borda */
+    top: 10px;
+    right: 10px;
+    padding: 3px 10px 3px 3px;
+  }
+
+  .profile-pic { width: 40px; height: 40px; }
 }
