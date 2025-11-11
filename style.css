@@ -1,0 +1,283 @@
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(135deg, #FFB6C1, #87CEFA, #98FB98, #FFFACD);
+  background-size: 400% 400%;
+  animation: gradientBG 8s ease infinite;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+h1 {
+  margin-top: 20px;
+  color: #222;
+  text-shadow: 2px 2px #fff;
+}
+
+/* Estilos para o perfil do jogador */
+#player-profile {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 50px; /* Faz o container ficar com bordas bem arredondadas */
+  padding: 5px 15px 5px 5px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 200; /* Garante que fique acima de tudo */
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Deixa a imagem redonda */
+  border: 2px solid #FF69B4;
+  margin-right: 10px;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.player-name, .player-score {
+  color: #333;
+  font-weight: bold;
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 15px;
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.card {
+  width: 100px;
+  height: 140px;
+  background-color: #fff;
+  border-radius: 10px;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.card-front {
+  background: #FF69B4;
+  color: white;
+}
+
+.card-back {
+  background: #FFD700;
+  transform: rotateY(180deg);
+  color: #333;
+}
+
+#question-container, #result-container {
+  background-color: rgba(255,255,255,0.9);
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 20px auto; /* Este margin será sobreposto pelo posicionamento fixo, mas é bom manter */
+  /* A animação será aplicada quando a classe 'hidden' for removida */
+}
+
+/* Nova animação mais suave */
+@keyframes slideDownFadeIn {
+  from {
+    transform: translate(-50%, -70%); /* Começa um pouco acima e centralizado */
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%); /* Termina perfeitamente centralizado */
+    opacity: 1;
+  }
+}
+
+/* Animação de celebração para o resultado final */
+@keyframes celebrateIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.3) rotate(-10deg);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#options button {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #87CEFA;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#options button:hover {
+  background-color: #00BFFF;
+  color: white;
+  transform: scale(1.05);
+}
+
+#timer {
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+#restart-btn {
+  background: #FF69B4;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#restart-btn:hover {
+  background: #FF1493;
+  transform: scale(1.1);
+}
+
+/* Adicione estas regras ao seu arquivo style.css */
+
+/* Centraliza os containers de pergunta e resultado */
+#question-container, #result-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  z-index: 100; /* Garante que fique na frente */
+}
+
+/* Aplica animações específicas para cada container */
+#question-container { animation: slideDownFadeIn 0.5s ease-out forwards; }
+#result-container {
+  animation: celebrateIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Feedback visual para as respostas */
+#options button.correct {
+  background-color: #28a745; /* Verde */
+  color: white;
+  border-color: #28a745;
+}
+
+#options button.wrong {
+  background-color: #dc3545; /* Vermelho */
+  color: white;
+  border-color: #dc3545;
+}
+
+/* Estilo para a frente da carta já respondida */
+.card-front.answered-front {
+  background-color: #6c757d; /* Cinza */
+  color: white;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para desativar a carta respondida */
+.card.answered {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Estilos para a tela de nome */
+#name-prompt-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background-color: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  z-index: 300;
+  animation: slideDownFadeIn 0.5s ease-out forwards;
+}
+
+#player-name-input {
+  width: 80%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+#start-game-btn {
+  background: #28a745; /* Verde */
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#start-game-btn:hover {
+  background: #218838;
+  transform: scale(1.1);
+}

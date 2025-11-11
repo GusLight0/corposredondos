@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎲 JOGO DE CARTAS – Corpos Redondos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🎲 JOGO DE CARTAS – Corpos Redondos</h1>
+
+  <div id="name-prompt-container">
+    <h2>Bem-vindo(a)!</h2>
+    <p>Digite seu nome para começar:</p>
+    <input type="text" id="player-name-input" placeholder="Seu nome aqui..." maxlength="15">
+    <button id="start-game-btn">Iniciar Jogo</button>
+  </div>
+
+  <div id="player-profile" class="hidden">
+    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Foto do Perfil" class="profile-pic">
+    <div class="player-info">
+      <span class="player-name"></span>
+      <span class="player-score">Pontos: <span id="current-score">0</span></span>
+    </div>
+  </div>
+  
+  <div id="game-board" class="hidden"></div>
+
+  <div id="question-container" class="hidden">
+    <h2 id="question"></h2>
+    <div id="options"></div>
+    <div id="timer">⏰ Tempo: <span id="time">60</span>s</div>
+  </div>
+
+  <div id="result-container" class="hidden">
+    <h2>🏁 Resultado Final</h2>
+    <p id="final-score"></p>
+    <p id="rank"></p>
+    <button id="restart-btn">Jogar Novamente 🔁</button>
+  </div>
+
+  <audio id="flip-sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_cfe0c8cb4d.mp3"></audio>
+  <audio id="correct-sound" src="https://cdn.pixabay.com/audio/2021/09/01/audio_7f16c7e36a.mp3"></audio>
+  <audio id="wrong-sound" src="https://cdn.pixabay.com/audio/2021/09/02/audio_9b6edb4cb4.mp3"></audio>
+  <audio id="timeout-sound" src="https://cdn.pixabay.com/audio/2021/09/02/audio_5c37205f4b.mp3"></audio>
+
+  <!-- Biblioteca para o efeito de confetes -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
