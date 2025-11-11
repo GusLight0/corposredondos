@@ -21,7 +21,7 @@ const timeoutSound = document.getElementById('timeout-sound');
 let score = 0;
 let currentQuestion = null;
 let timer;
-let timeLeft = 60;
+let timeLeft = 15;
 let answeredQuestions = 0;
 
 const questions = [
@@ -93,7 +93,7 @@ function showQuestion(index) {
 }
 
 function startTimer() {
-  timeLeft = 60;
+  timeLeft = 15;
   timerSpan.textContent = timeLeft;
   timer = setInterval(() => {
     timeLeft--;
@@ -172,7 +172,7 @@ function updateScoreDisplay() {
 startGameBtn.addEventListener('click', () => {
   let playerName = playerNameInput.value.trim();
   if (playerName === "") {
-    playerName = "Jogador"; // Nome padrão se nada for digitado
+    playerName = "Anônimo"; // Nome padrão se nada for digitado
   }
 
   document.querySelector('.player-name').textContent = playerName;
