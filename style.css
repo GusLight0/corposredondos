@@ -285,25 +285,31 @@ h1 {
 /* --- REGRAS DE RESPONSIVIDADE --- */
 @media (max-width: 600px) {
   h1 {
-    font-size: 1.5em; /* Diminui o título em telas pequenas */
+    font-size: 1.4em; /* Diminui um pouco mais o título */
+    margin-top: 15px;
+    margin-bottom: 10px;
   }
 
   #game-board {
     max-width: 95%; /* Ocupa quase toda a largura */
     gap: 8px; /* Espaçamento ainda menor entre as cartas */
+    margin-top: 15px; /* Adiciona espaço abaixo do perfil */
   }
 
   .card {
-    /* Remove o tamanho fixo para que a carta se ajuste ao grid */
-    width: auto; 
-    height: 120px; /* Mantém uma altura razoável */
+    width: auto; /* Permite que a largura seja flexível */
+    /* Força a proporção de carta (ex: 5:7). A altura será 1.4x a largura */
+    aspect-ratio: 5 / 7;
+    height: auto; /* A altura será calculada pelo aspect-ratio */
   }
 
   #player-profile {
-    /* Ajusta o perfil para não ficar tão colado na borda */
-    top: 10px;
-    right: 10px;
-    padding: 3px 10px 3px 3px;
+    /* Tira o perfil da posição fixa e o coloca no fluxo normal do documento */
+    position: relative;
+    top: auto;
+    right: auto;
+    display: inline-flex; /* Permite centralização pelo text-align do body */
+    margin-bottom: 10px;
   }
 
   .profile-pic { width: 40px; height: 40px; }
