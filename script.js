@@ -12,6 +12,7 @@ const playerNameInput = document.getElementById('player-name-input');
 const startGameBtn = document.getElementById('start-game-btn');
 const playerProfile = document.getElementById('player-profile');
 const currentScoreSpan = document.getElementById('current-score');
+const overlay = document.getElementById('overlay');
 
 const flipSound = document.getElementById('flip-sound');
 const correctSound = document.getElementById('correct-sound');
@@ -178,6 +179,7 @@ startGameBtn.addEventListener('click', () => {
   document.querySelector('.player-name').textContent = playerName;
 
   namePromptContainer.classList.add('hidden');
+  overlay.classList.remove('active'); // Esconde o overlay
   playerProfile.classList.remove('hidden');
   board.classList.remove('hidden');
 
@@ -185,3 +187,6 @@ startGameBtn.addEventListener('click', () => {
   createBoard();
   updateScoreDisplay(); // Mostra a pontuação inicial (0)
 });
+
+// Mostra o overlay no início
+overlay.classList.add('active');

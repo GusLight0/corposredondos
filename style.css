@@ -286,10 +286,9 @@ h1 {
 @media (max-width: 600px) {
   h1 {
     font-size: 1.6em; /* Aumenta um pouco a fonte no celular */
-    margin-top: 15px;
-    margin-bottom: 10px;
-    /* Adiciona espaçamento lateral para o texto não cortar */
-    padding: 0 15px;
+    margin: 15px 65px 10px 15px; /* Margem direita maior para não bater no perfil */
+    padding: 0; /* Remove o padding anterior */
+    line-height: 1.2; /* Melhora o espaçamento se o título quebrar em duas linhas */
   }
 
   #game-board {
@@ -306,12 +305,10 @@ h1 {
   }
 
   #player-profile {
-    /* Tira o perfil da posição fixa e o coloca no fluxo normal do documento */
-    position: relative;
-    top: auto;
-    right: auto;
-    display: inline-flex; /* Permite centralização pelo text-align do body */
-    margin-bottom: 10px;
+    /* Garante que o perfil fique fixo no canto superior direito também no celular */
+    top: 10px;
+    right: 10px;
+    padding: 3px 10px 3px 3px;
   }
 
   .profile-pic { width: 40px; height: 40px; }
@@ -323,4 +320,21 @@ footer {
   font-size: 0.9em;
   color: #555;
   text-align: center;
+}
+
+/* Estilo para o fundo de sobreposição (overlay) */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo preto semi-transparente */
+  z-index: 250; /* Fica abaixo do pop-up, mas acima de todo o resto */
+  display: none; /* Começa escondido */
+}
+
+/* Quando o overlay estiver ativo, ele aparece */
+#overlay.active {
+  display: block;
 }
